@@ -1,4 +1,4 @@
-\# Smart Habit Tracker (Flask)
+# Smart Habit Tracker (Flask)
 
 
 
