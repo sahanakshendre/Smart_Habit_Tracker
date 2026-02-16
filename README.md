@@ -1,4 +1,4 @@
-\# Smart Habit Tracker (Flask)
+# Smart Habit Tracker (Flask)
 
 
 
@@ -6,7 +6,7 @@ Smart Habit Tracker is a web application built with Flask (Python) that helps us
 
 
 
-\# Features
+# Features
 
 
 
@@ -27,8 +27,7 @@ Smart Habit Tracker is a web application built with Flask (Python) that helps us
 • View completed habits on a separate calendar section  
 
 
-
-\## Installation
+# Installation
 
 
 
@@ -62,32 +61,19 @@ Smart Habit Tracker is a web application built with Flask (Python) that helps us
 
 &nbsp;  python app.py
 
-
-
-
-
-\## Usage
-
-
+# Usage
 
 • Open your browser and go to `http://127.0.0.1:5000/` 
 
-&nbsp;
-
 • Register a new account or login  
 
-
-
 • Add and track your habits 
-
-&nbsp;
 
 • Check analytics and calendar views  
 
 
 
-\## License
-
+# License
 
 
 This project is licensed under the MIT License.
