@@ -24,7 +24,6 @@ quotes = [
     "Success is built daily."
 ]
 
-# ---------------- USER FUNCTIONS ----------------
 
 def load_users():
     with open(USER_FILE, "r") as f:
@@ -34,7 +33,6 @@ def save_users(users):
     with open(USER_FILE, "w") as f:
         json.dump(users, f)
 
-# ---------------- AUTH ----------------
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
@@ -76,7 +74,6 @@ def logout():
     session.pop("user", None)
     return redirect(url_for("login"))
 
-# ---------------- DASHBOARD (EXACTLY SAME AS YOUR ORIGINAL) ----------------
 
 @app.route("/")
 def dashboard():
@@ -85,7 +82,6 @@ def dashboard():
 
     habits = load_habits()
 
-    # -------- FILTERS --------
     category_filter = request.args.get("category")
     search = request.args.get("search", "").lower()
     priority_filter = request.args.get("priority")
@@ -103,11 +99,11 @@ def dashboard():
     if priority_filter:
         habits = [h for h in habits if h.get("priority") == priority_filter]
 
-    # -------- CATEGORY LIST --------
+ 
     all_habits = load_habits()
     categories = list(set(h.get("category") for h in all_habits))
 
-    # -------- CALENDAR --------
+
     today = datetime.now()
     year = today.year
     month = today.month
@@ -116,7 +112,7 @@ def dashboard():
     if not selected_date:
         selected_date = str(today.date())
 
-    # -------- PROGRESS --------
+
     total = len(habits)
     completed = sum(
         1 for h in habits
@@ -138,7 +134,6 @@ def dashboard():
         progress=progress
     )
 
-# ---------------- NEW SEPARATE CALENDAR PAGE ----------------
 
 @app.route("/calendar")
 def calendar_page():
@@ -183,9 +178,6 @@ def complete_date(habit_index, date):
     return redirect(url_for("dashboard", date=date))
 
 
-
-# ---------------- HABIT ACTIONS (UNCHANGED) ----------------
-
 @app.route("/add", methods=["POST"])
 def add():
     habits = load_habits()
@@ -229,8 +221,6 @@ def reset():
     save_habits(habits)
     return redirect(url_for("dashboard"))
 
-# ---------------- ANALYTICS (UNCHANGED) ----------------
-
 @app.route("/analytics")
 def analytics():
     habits = load_habits()
@@ -242,7 +232,6 @@ def analytics():
 
     return render_template("analytics.html", categories=categories)
 
-# ---------------- PROFILE (UNCHANGED) ----------------
 
 @app.route("/profile")
 def profile():
@@ -255,7 +244,6 @@ def profile():
 
     return render_template("profile.html", created=created, days=days)
 
-# ---------------- RUN ----------------
 
 if __name__ == "__main__":
     app.run(debug=True)
