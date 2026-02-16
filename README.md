@@ -65,31 +65,7 @@ Smart Habit Tracker is a web application built with Flask (Python) that helps us
 
 
 
-# Installation
-
-
-1. Clone the repository:
-
-   https://github.com/sahanakshendre/Smart_Habit_Tracker.git
-
-
-2. Navigate to the project folder:
-
-   cd Smart_Habit_Tracker
-
-
-3. Install required packages:
-
-   pip install -r requirements.txt
-
-
-4. Run the application:
-
-   python app.py
-
-
-
-## Usage
+# Usage
 
 
 • Open your browser and go to `http://127.0.0.1:5000/` 
