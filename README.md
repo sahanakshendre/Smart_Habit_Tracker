@@ -6,7 +6,7 @@ Smart Habit Tracker is a web application built with Flask (Python) that helps us
 
 
 
-\## Features
+\# Features
 
 
 
@@ -36,7 +36,7 @@ Smart Habit Tracker is a web application built with Flask (Python) that helps us
 
 
 
-&nbsp;  git clone https://github.com/sahanakshendre/Smart\_Habit\_Tracker.git
+&nbsp;  git clone https://github.com/sahanakshendre/Smart_Habit_Tracker.git
 
 
 
