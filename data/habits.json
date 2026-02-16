@@ -1,0 +1,34 @@
+[
+    {
+        "name": "Learn About Investing",
+        "category": "Finance",
+        "priority": "Low",
+        "history": [],
+        "streak": 0
+    },
+    {
+        "name": "Drinking 3L Water",
+        "category": "Health",
+        "priority": "Medium",
+        "history": [
+            "2026-02-16"
+        ],
+        "streak": 1
+    },
+    {
+        "name": "Practice Python",
+        "category": "Education",
+        "priority": "High",
+        "history": [],
+        "streak": 0
+    },
+    {
+        "name": "10 min Meditation",
+        "category": "Health",
+        "priority": "Medium",
+        "history": [
+            "2026-02-16"
+        ],
+        "streak": 1
+    }
+]

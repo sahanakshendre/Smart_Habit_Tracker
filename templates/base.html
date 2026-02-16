@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Smart Habit Tracker</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script>
+        function toggleDark() {
+            document.body.classList.toggle("dark");
+        }
+    </script>
+</head>
+<body>
+
+<nav>
+    <div class="logo">Smart Habit Tracker</div>
+
+    {% if session.get('user') %}
+    <div class="nav-links">
+        <a href="/">Dashboard</a>
+        <a href="/analytics">Analytics</a>
+        <a href="/calendar">calendar</a>
+        <a href="/reset">Reset</a>
+        <a href="/profile">👤 {{ session.get('user') }}</a>
+        <a href="/logout">Logout</a>
+         <button onclick="toggleDark()">🌙</button>
+    </div>
+    {% endif %}
+</nav>
+
+
+
+<div class="container">
+    {% block content %}{% endblock %}
+</div>
+
+</body>
+</html>
+

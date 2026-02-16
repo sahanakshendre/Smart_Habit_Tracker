@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2 style="text-align:center; margin-top:20px;">Your Journey</h2>
+
+<div class="days-container">
+    {% for day in day_list %}
+        <div class="day-card">
+            {{ day }}
+        </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

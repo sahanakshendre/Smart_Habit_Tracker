@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Category Analytics</h2>
+
+<ul>
+{% for category, count in categories.items() %}
+<li>{{ category }} : {{ count }} total completions</li>
+{% endfor %}
+</ul>
+
+{% endblock %}

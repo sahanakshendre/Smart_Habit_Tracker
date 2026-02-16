@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>{{ current_month }} {{ current_year }}</h2>
+
+<div class="calendar">
+    {% for week in calendar %}
+        <div class="week-row">
+            {% for day in week %}
+                {% if day == 0 %}
+                    <div class="day empty"></div>
+                {% else %}
+                    {% set full_date =
+                        current_year|string + "-" +
+                        "%02d"|format(current_month_number) + "-" +
+                        "%02d"|format(day)
+                    %}
+
+                    <a href="{{ url_for('calendar_page', date=full_date) }}">
+                        <div class="day-box
+                            {% if full_date == selected_date %}selected{% endif %}
+                        ">
+                            {{ day }}
+                        </div>
+                    </a>
+                {% endif %}
+            {% endfor %}
+        </div>
+    {% endfor %}
+</div>
+
+<hr>
+
+<h3>Selected Date: {{ selected_date }}</h3>
+
+<h3>Completed Habits</h3>
+
+{% if completed_habits %}
+    <ul class="habit-list">
+        {% for habit in completed_habits %}
+        <li>
+            <strong>{{ habit.name }}</strong>
+            ({{ habit.category }})
+            <span class="priority-badge {{ habit.priority }}">
+                {{ habit.priority }}
+            </span>
+        </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No habits completed on this date.</p>
+{% endif %}
+
+{% endblock %}

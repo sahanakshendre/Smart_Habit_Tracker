@@ -1,0 +1,107 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>{{ current_month }} {{ current_year }}</h2>
+
+<!-- ================= CATEGORY FILTER ================= -->
+
+<form method="GET" action="/">
+    <select name="category" onchange="this.form.submit()">
+        <option value="All">All Categories</option>
+        {% for cat in categories %}
+            <option value="{{ cat }}"
+                {% if selected_category == cat %}selected{% endif %}>
+                {{ cat }}
+            </option>
+        {% endfor %}
+    </select>
+</form>
+
+<!-- ================= CALENDAR ================= -->
+
+<div class="calendar">
+    {% for week in calendar %}
+        <div class="week-row">
+            {% for day in week %}
+                {% if day == 0 %}
+                    <div class="day empty"></div>
+                {% else %}
+                    {% set month_number = selected_date.split("-")[1] %}
+
+                     {% set full_date =
+                     current_year|string + "-" +
+                     month_number + "-" +
+                     "%02d"|format(day)
+                    %}
+
+                    <a href="{{ url_for('calendar_page', date=full_date) }}">
+
+                        <div class="day-box
+                            {% if full_date == selected_date %}selected{% endif %}
+                        ">
+                            {{ day }}
+                        </div>
+                    </a>
+                {% endif %}
+            {% endfor %}
+        </div>
+    {% endfor %}
+</div>
+
+<!-- ================= SELECTED DATE INFO ================= -->
+
+<h3>Selected Date: {{ selected_date }}</h3>
+<h3>Progress: {{ progress|round(2) }}%</h3>
+
+<div class="progress-container">
+    <div class="progress-bar" style="width: {{ progress }}%"></div>
+</div>
+
+<!-- ================= ADD HABIT ================= -->
+
+<h3>Add New Habit</h3>
+
+<form action="/add" method="POST" class="add-form">
+    <input type="text" name="name" placeholder="Habit Name" required>
+
+    <input type="text" name="category" placeholder="Category" required>
+
+    <select name="priority" required>
+        <option value="">Select Priority</option>
+        <option value="High">High</option>
+        <option value="Medium">Medium</option>
+        <option value="Low">Low</option>
+    </select>
+
+    <button type="submit">Add Habit</button>
+</form>
+
+<!-- ================= HABIT LIST ================= -->
+
+<ul class="habit-list">
+{% for habit in habits %}
+{% set habit_index = loop.index0 %}
+
+<li class="{{ habit.priority }}">
+    <strong>{{ habit.name }}</strong>
+    ({{ habit.category }})
+
+    <span class="priority-badge {{ habit.priority }}">
+        {{ habit.priority }}
+    </span>
+
+    {% if selected_date in habit.history %}
+        <span class="done">Completed ✅</span>
+    {% else %}
+        <a href="/complete_date/{{ habit_index }}/{{ selected_date }}">
+            Mark Complete
+        </a>
+    {% endif %}
+
+    <a href="/delete/{{ habit_index }}">Delete</a>
+</li>
+
+{% endfor %}
+</ul>
+
+{% endblock %}
