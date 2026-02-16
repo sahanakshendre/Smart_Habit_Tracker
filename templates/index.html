@@ -3,8 +3,6 @@
 
 <h2>{{ current_month }} {{ current_year }}</h2>
 
-<!-- ================= CATEGORY FILTER ================= -->
-
 <form method="GET" action="/">
     <select name="category" onchange="this.form.submit()">
         <option value="All">All Categories</option>
@@ -16,8 +14,6 @@
         {% endfor %}
     </select>
 </form>
-
-<!-- ================= CALENDAR ================= -->
 
 <div class="calendar">
     {% for week in calendar %}
@@ -48,16 +44,12 @@
     {% endfor %}
 </div>
 
-<!-- ================= SELECTED DATE INFO ================= -->
-
 <h3>Selected Date: {{ selected_date }}</h3>
 <h3>Progress: {{ progress|round(2) }}%</h3>
 
 <div class="progress-container">
     <div class="progress-bar" style="width: {{ progress }}%"></div>
 </div>
-
-<!-- ================= ADD HABIT ================= -->
 
 <h3>Add New Habit</h3>
 
@@ -75,8 +67,6 @@
 
     <button type="submit">Add Habit</button>
 </form>
-
-<!-- ================= HABIT LIST ================= -->
 
 <ul class="habit-list">
 {% for habit in habits %}
